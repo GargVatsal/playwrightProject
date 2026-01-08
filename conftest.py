@@ -15,5 +15,11 @@ def browser():
 @pytest.fixture(scope="function")
 def context(browser):
     context = browser.new_context()
+    context.tracing.start(
+        screenshots=True,
+        snapshots=True,
+        sources=True
+    )
     yield context
+    context.tracing.stop(path="D:\\pytest\\traces\\vatsal.zip")
     context.close()
