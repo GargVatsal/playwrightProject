@@ -8,6 +8,7 @@ def browser():
         browser = p.chromium.launch(
             headless = False
         )
+        p.selectors.set_test_id_attribute("data-test")
         yield browser
         browser.close()
 
